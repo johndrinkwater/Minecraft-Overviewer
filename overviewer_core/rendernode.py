@@ -211,7 +211,7 @@ class RenderNode(object):
                                     if item[1] not in world.POI:
                                         #print "got an item from the queue!"
                                         world.POI.append(item[1])
-                                elif item[0] == "animal":
+                                elif item[0] == "entities":
                                     if item[1] not in world.POI:
                                         world.POI.append(item[1])
                                 elif item[0] == "removePOI":
@@ -246,7 +246,7 @@ class RenderNode(object):
                         if item[1] not in world.POI:
                             #print "got an item from the queue!"
                             world.POI.append(item[1])
-                    elif item[0] == "animal":
+                    elif item[0] == "entities":
                         if item[1] not in world.POI:
                             world.POI.append(item[1])
                     elif item[0] == "removePOI":

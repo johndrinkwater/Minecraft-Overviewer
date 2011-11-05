@@ -19,14 +19,7 @@ var overviewerConfig = {
             'signMarker':       'signpost_icon.png',
             'compass':          'compass_{north_direction}.png',
             'spawnMarker':      'http://google-maps-icons.googlecode.com/files/home.png',
-            'queryMarker':      'http://google-maps-icons.googlecode.com/files/regroup.png',
-			'cowMarker':		'cow.png',
-			'sheepMarker':		'sheep.png',
-			'pigMarker':		'pig.png',
-			'chickenMarker':	'chicken.png',
-			'squidMarker':		'squid.png',
-			'wolfMarker':		'wolf.png',
-			'arkMarker':		'ark.png'
+            'queryMarker':      'http://google-maps-icons.googlecode.com/files/regroup.png'
         },
         'mapDivId':             'mcmap',
         'regionStrokeWeight':   2
@@ -140,24 +133,11 @@ var overviewerConfig = {
             //{label: "Info", match: function(s) { return s.msg.match("\\[info\\]");}, icon:"http://google-maps-icons.googlecode.com/files/info.png"},   
             {'label':'All', 'match':function(sign){return true;}}
         ],
-		/* animals -- A list of the passive animals.
+		/* Entities -- Just like signs, but for things like mobs.
  		 */
-		'animals': [
+		'entities': [
 			//
-			{'label':'ark', 'icon': 'ark.png', 'match':function(animal){
-				return (animal.type == "cow" ||
-				   animal.type == "pig" ||
-				   animal.type == "sheep" ||
-				   animal.type == "chicken" ||
-				   animal.type == "squid" ||
-				   animal.type == "wolf" );
-			}},
-			{'label':'cow', 'icon': 'cow.png', 'match':function(animal){ return (animal.type == "cow") }},
-			{'label':'pig', 'icon': 'pig.png', 'match':function(animal){ return (animal.type == "pig") }},
-			{'label':'sheep', 'icon': 'sheep.png', 'match':function(animal){ return (animal.type == "sheep") }},
-			{'label':'chicken', 'icon': 'chicken.png', 'match':function(animal){ return (animal.type == "chicken") }},
-			{'label':'squid', 'icon': 'squid.png', 'match':function(animal){ return (animal.type == "squid") }},
-			{'label':'wolf', 'icon': 'wolf.png', 'match':function(animal){ return (animal.type == "wolf") }}
+			{'label':'mobs', 'icon': 'Cow.png', 'match':function(entity){return true;}},
 		],
 
         /* regions -- A list of region groups.  A region can fall into zero,

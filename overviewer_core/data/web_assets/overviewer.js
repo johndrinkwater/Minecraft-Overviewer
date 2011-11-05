@@ -288,11 +288,11 @@ var overviewer = {
                 overviewer.collections.markers[
                     overviewerConfig.objectGroups.signs[i].label] = [];
             }
-            for (i in overviewerConfig.objectGroups.animals) {
-                overviewer.util.debug('Found animal group: ' +
-                    overviewerConfig.objectGroups.animals[i].label);
+            for (i in overviewerConfig.objectGroups.entities) {
+                overviewer.util.debug('Found entities group: ' +
+                    overviewerConfig.objectGroups.entities[i].label);
                 overviewer.collections.markers[
-                    overviewerConfig.objectGroups.animals[i].label] = [];
+                    overviewerConfig.objectGroups.entities[i].label] = [];
             }
             for (i in overviewer.collections.markerDatas) {
                 var markerData = overviewer.collections.markerDatas[i];
@@ -327,59 +327,14 @@ var overviewer = {
                         continue;
                     }
 
-                    if (item.type == 'cow') { 
+                    if (item.type == 'entity') { 
                         var marker = new google.maps.Marker({
                             'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
                              'map':     overviewer.map,
-                             'icon':    overviewerConfig.CONST.image.cowMarker,
+                             'icon':    item.msg + '.png',
 							 'visible':  false
                         });
-						overviewer.collections.markers['ark'].push(marker);
-						overviewer.collections.markers[item.type].push(marker);
-                        continue;
-                    }
-                    if (item.type == 'sheep') { 
-                        var marker = new google.maps.Marker({
-                            'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
-                             'map':     overviewer.map,
-                             'icon':    overviewerConfig.CONST.image.sheepMarker,
-							 'visible':  false
-                        });
-						overviewer.collections.markers['ark'].push(marker);
-						overviewer.collections.markers[item.type].push(marker);
-                        continue;
-                    }
-                    if (item.type == 'pig') { 
-                        var marker = new google.maps.Marker({
-                            'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
-                             'map':     overviewer.map,
-                             'icon':    overviewerConfig.CONST.image.pigMarker,
-							 'visible':  false
-                        });
-						overviewer.collections.markers['ark'].push(marker);
-						overviewer.collections.markers[item.type].push(marker);
-                        continue;
-                    }
-                    if (item.type == 'chicken') { 
-                        var marker = new google.maps.Marker({
-                            'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
-                             'map':     overviewer.map,
-                             'icon':    overviewerConfig.CONST.image.chickenMarker,
-							 'visible':  false
-                        });
-						overviewer.collections.markers['ark'].push(marker);
-						overviewer.collections.markers[item.type].push(marker);
-                        continue;
-                    }
-                    if (item.type == 'squid') { 
-                        var marker = new google.maps.Marker({
-                            'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
-                             'map':     overviewer.map,
-                             'icon':    overviewerConfig.CONST.image.squidMarker,
-							 'visible':  false
-                        });
-						overviewer.collections.markers['ark'].push(marker);
-						overviewer.collections.markers[item.type].push(marker);
+						overviewer.collections.markers['mobs'].push(marker);
                         continue;
                     }
                     if (item.type == 'wolf') { 
@@ -790,11 +745,11 @@ var overviewer = {
 
             // only need to create the control if there are items in the list.
             // as defined in config.js
-            if (overviewerConfig.objectGroups.animals.length > 0) {
+            if (overviewerConfig.objectGroups.entities.length > 0) {
                 // signpost display control
                 var items = [];
-                for (i in overviewerConfig.objectGroups.animals) {
-                    var signGroup = overviewerConfig.objectGroups.animals[i];
+                for (i in overviewerConfig.objectGroups.entities) {
+                    var signGroup = overviewerConfig.objectGroups.entities[i];
                     // don't create an option for this group if empty
                     if (overviewer.collections.markers[signGroup.label].length == 0) {
                         continue;
@@ -821,7 +776,7 @@ var overviewer = {
                 
                 // only create drop down if there's used options
                 if (items.length > 0) {
-                    overviewer.util.createDropDown('Animals', items);
+                    overviewer.util.createDropDown('Entities', items);
                 }
             }
 

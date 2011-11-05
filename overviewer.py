@@ -179,7 +179,7 @@ def main():
     parser.add_option("-q", "--quiet", dest="quiet", action="count", default=0, helptext="Print less output. You can specify this option multiple times.")
     parser.add_option("-v", "--verbose", dest="verbose", action="count", default=0, helptext="Print more output. You can specify this option multiple times.")
     parser.add_option("--skip-js", dest="skipjs", action="store_true", helptext="Don't output marker.js or regions.js")
-    parser.add_option("--animals", dest="wantanimals", action="store_true", default=False, helptext="Output passive mobs into marker.js")
+    parser.add_option("--entities", dest="wantentities", default=[], helptext="Output entities into marker.js") # ["Cow", "Sheep", "Pig", "Chicken", "Squid"]
     parser.add_option("--no-signs", dest="nosigns", action="store_true", helptext="Don't output signs to markers.js")
     parser.add_option("--north-direction", dest="north_direction", action="store", helptext="Specifies which corner of the screen north will point to. Defaults to whatever the current map uses, or lower-left for new maps. Valid options are: " + ", ".join(avail_north_dirs) + ".", type="choice", default="auto", choices=avail_north_dirs)
     parser.add_option("--changelist", dest="changelist", action="store", helptext="Output list of changed tiles to file. If the file exists, its contents will be overwritten.",advanced=True)
@@ -328,6 +328,12 @@ dir but you forgot to put quotes around the directory, since it contains spaces.
         optimizeimages.check_programs(optimizeimg)
     else:
         optimizeimg = None
+
+	# not sure how to bubble this to chunk.py
+	global wantentities
+	wantentities = []
+	if options.wantentities is not []:
+		wantentities = options.wantentities
 
     if options.north_direction:
         north_direction = options.north_direction
