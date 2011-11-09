@@ -35,9 +35,6 @@ if not hasattr(sys, "frozen"):
 
 from overviewer_core import nbt
 
-print "finding animals, fuck yeah!"
-
-
 from pprint import pprint
 if len(sys.argv) < 3:
     sys.exit("Usage: %s <worlddir> <outputdir> [north_direction]" % sys.argv[0])
@@ -82,6 +79,7 @@ for dirpath, dirnames, filenames in os.walk(worlddir):
                 chunk = r.load_chunk(x,y).read_all()                
                 data = chunk[1]['Level']['Entities']
                 for entity in data:
+                    newPOI = None
                     if entity['id'] == 'Cow':
                         newPOI = dict(type="cow",
                                         x= entity['Pos'][0], y= entity['Pos'][1], z= entity['Pos'][2], msg='moo', chunk= (entity['Pos'][0]/16, entity['Pos'][2]/16),
@@ -107,7 +105,13 @@ for dirpath, dirnames, filenames in os.walk(worlddir):
                                         x= entity['Pos'][0], y= entity['Pos'][1], z= entity['Pos'][2], msg='squelch', chunk= (entity['Pos'][0]/16, entity['Pos'][2]/16),
                                        )
                         POI.append(newPOI)
-                    print "Found %s at (%d, %d, %d)" % (newPOI['type'], newPOI['x'], newPOI['y'], newPOI['z'])
+                    elif entity['id'] == 'Wolf':
+                        newPOI = dict(type="wolf",
+                                        x= entity['Pos'][0], y= entity['Pos'][1], z= entity['Pos'][2], msg='woof', chunk= (entity['Pos'][0]/16, entity['Pos'][2]/16),
+                                       )
+                        POI.append(newPOI)
+                    if newPOI is not None:
+                        print "Found %s at (%d, %d, %d)" % (newPOI['type'], newPOI['x'], newPOI['y'], newPOI['z'])
 
 
 if os.path.isfile(os.path.join(worlddir, "overviewer.dat")):
