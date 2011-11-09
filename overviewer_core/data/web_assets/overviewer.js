@@ -382,6 +382,17 @@ var overviewer = {
 						overviewer.collections.markers[item.type].push(marker);
                         continue;
                     }
+                    if (item.type == 'wolf') { 
+                        var marker = new google.maps.Marker({
+                            'position': overviewer.util.fromWorldToLatLng(item.x, item.y, item.z),
+                             'map':     overviewer.map,
+                             'icon':    overviewerConfig.CONST.image.wolfMarker,
+							 'visible':  false
+                        });
+						overviewer.collections.markers['ark'].push(marker);
+						overviewer.collections.markers[item.type].push(marker);
+                        continue;
+                    }
 
                     var matched = false;
                     for (j in overviewerConfig.objectGroups.signs) {

@@ -181,7 +181,7 @@ class MapGen(object):
             markers = filter(lambda x: x['type'] != 'sign', self.world.POI)
 
         if not self.wantanimals:
-			markers = filter(lambda x: x['type'] not in set(( 'cow', 'sheep', 'pig', 'squid', 'chicken' )), markers)
+			markers = filter(lambda x: x['type'] not in set(( 'cow', 'sheep', 'pig', 'squid', 'chicken', 'wolf' )), markers)
 
         # save persistent data
         self.world.persistentData['POI'] = self.world.POI

@@ -25,6 +25,7 @@ var overviewerConfig = {
 			'pigMarker':		'pig.png',
 			'chickenMarker':	'chicken.png',
 			'squidMarker':		'squid.png',
+			'wolfMarker':		'wolf.png',
 			'arkMarker':		'ark.png'
         },
         'mapDivId':             'mcmap',
@@ -148,13 +149,15 @@ var overviewerConfig = {
 				   animal.type == "pig" ||
 				   animal.type == "sheep" ||
 				   animal.type == "chicken" ||
-				   animal.type == "squid");
+				   animal.type == "squid" ||
+				   animal.type == "wolf" );
 			}},
 			{'label':'cow', 'icon': 'cow.png', 'match':function(animal){ return (animal.type == "cow") }},
 			{'label':'pig', 'icon': 'pig.png', 'match':function(animal){ return (animal.type == "pig") }},
 			{'label':'sheep', 'icon': 'sheep.png', 'match':function(animal){ return (animal.type == "sheep") }},
 			{'label':'chicken', 'icon': 'chicken.png', 'match':function(animal){ return (animal.type == "chicken") }},
-			{'label':'squid', 'icon': 'squid.png', 'match':function(animal){ return (animal.type == "squid") }}
+			{'label':'squid', 'icon': 'squid.png', 'match':function(animal){ return (animal.type == "squid") }},
+			{'label':'wolf', 'icon': 'wolf.png', 'match':function(animal){ return (animal.type == "wolf") }}
 		],
 
         /* regions -- A list of region groups.  A region can fall into zero,

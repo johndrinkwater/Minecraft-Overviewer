@@ -423,6 +423,10 @@ class ChunkRenderer(object):
                 newPOI = dict(type="squid",
                                 x= entity['Pos'][0], y= entity['Pos'][1], z= entity['Pos'][2], msg='', chunk=(self.chunkX, self.chunkY),
                                )
+            elif entity['id'] == 'Wolf':
+                newPOI = dict(type="wolf",
+                                x= entity['Pos'][0], y= entity['Pos'][1], z= entity['Pos'][2], msg='', chunk=(self.chunkX, self.chunkY),
+                               )
             if self.queue and newPOI is not None:
                 self.queue.put(["animal", newPOI])
 
