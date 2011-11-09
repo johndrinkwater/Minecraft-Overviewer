@@ -144,7 +144,7 @@ for dirpath, dirnames, filenames in os.walk(worlddir):
             mapWidth = mapItem['width']
             mapHeight = mapItem['height']
             data = array('b', mapItem['colors']).tolist()
-            data = map(lambda x: colours[x+1], data)
+            data = map(colours.__getitem__, data)
             data = [item for sublist in data for item in sublist]
             data = map(lambda x: data[x*(mapHeight*3):(x+1)*(mapHeight*3)], range(0,(mapWidth)))            
             png.from_array(data, 'RGB', { 'width':mapWidth, 'height':mapHeight, 'transparent': colours[0] } ).save(output)
